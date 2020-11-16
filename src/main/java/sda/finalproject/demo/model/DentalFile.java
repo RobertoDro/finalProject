@@ -1,11 +1,12 @@
 package sda.finalproject.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.time.LocalDate;
+import java.util.*;
 
 @Data
 @Entity
@@ -14,12 +15,20 @@ public class DentalFile {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String diagnostic;
-    private Date date;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private LocalDate date;
 
-    @Lob
-    private String treatment;
+    private String dentalImplants;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tooth")
-    private Set<Tooth> toothList = new HashSet<>();
+    private String missingTeeth;
+
+
+    @OneToMany(cascade = CascadeType.ALL,mappedBy ="dentalFile")
+    private List<ToothFile> toothFiles = new ArrayList<>();
+
+    @ManyToOne
+    @JsonIgnore
+    private Patient patient;
+
+
 }
