@@ -34,6 +34,8 @@ public class Patient {
     @Lob
     private byte[] image;
 
+    @Lob
+    private byte[] document;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "patient")
     private List<DentalFile> dentalFiles = new ArrayList<>();
