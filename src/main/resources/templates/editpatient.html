@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!--Let browser know website is optimized for mobile-->
+    <script src="https://kit.fontawesome.com/9f341b75ad.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <title>Edit patient</title>
+
+</head>
+<body class="pink lighten-3">
+<nav>
+    <div class="nav-wrapper navbar-fixed grey darken-4">
+        <ul class="left ">
+            <li><a href="#"><i class="fas fa-tooth"></i></a></li>
+            <li><a th:href="@{/patients}">Patients</a></li>
+            <li> <a th:href="@{/logout}">Logout</a> </li>
+        </ul>
+    </div>
+</nav>
+<div class="row">
+    <form class="col s12" th:action="@{/editpatient/{id}(id=${patient.id})}" th:object="${patient}" method="post">
+        <div class="container">
+            <h1>Edit patient <a class="right" th:href="@{/patients}"><i class="fas fa-arrow-left"></i></a></h1>
+            <h5>Please fill in this form to edit a professor.</h5>
+            <hr>
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="fas fa-user-circle prefix"></i>
+                    <label for="first_name" class="black-text"><b>First Name</b></label>
+                    <input th:field="*{firstName}" id="first_name" type="text" placeholder="First Name" required>
+                </div>
+                <div class="input-field col s6">
+                    <i class="fas fa-user-circle prefix"></i>
+                    <label for="last_name" class="black-text"><b>Last Name</b></label>
+                    <input th:field="*{lastName}" id="last_name" type="text" placeholder="Last Name" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="fas fa-phone prefix"></i>
+                    <label for="phoneNumber" class="black-text"><b>Phone number</b></label>
+                    <input th:field="*{phoneNumber}" id="phoneNumber" type="text" placeholder="Phone number" required>
+                </div>
+                <div class="input-field col s6">
+                    <i class="fas fa-address-card prefix"></i>
+                    <label for="cnp" class="black-text"><b>CNP</b></label>
+                    <input th:field="*{cnp}" id="cnp" type="text" placeholder="CNP" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="fas fa-road prefix"></i>
+                    <label for="street" class="black-text"><b>Street</b></label>
+                    <input th:field="*{street}" id="street" type="text" placeholder="Street" required>
+                </div>
+                <div class="input-field col s6">
+                    <i class="fas fa-map-marked-alt prefix"></i>
+                    <label for="numberOfStreet" class="black-text"><b>Street number</b></label>
+                    <input th:field="*{numberOfStreet}" id="numberOfStreet" type="text" placeholder="Street number" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="far fa-building prefix"></i>
+                    <label for="apartment" class="black-text"><b>Apartment</b></label>
+                    <input th:field="*{apartment}" id="apartment" type="text" placeholder="Apartment" required>
+                </div>
+            </div>
+            <button class="btn waves-effect waves-light light-blue black-text" type="submit" name="action"><strong>Update</strong></button>
+        </div>
+    </form>
+</div>

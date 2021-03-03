@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/9f341b75ad.js" crossorigin="anonymous"></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+
+    <script type = "text/javascript" src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <title>Add DentalFile</title>
+</head>
+<body class="pink lighten-3">
+<nav>
+    <div class="nav-wrapper navbar-fixed grey darken-4">
+        <ul class="left ">
+            <li><a href="#"><i class="fas fa-tooth"></i></a></li>
+            <li><a th:href="@{/patients}">Patients</a></li>
+            <li> <a th:href="@{/logout}">Logout</a> </li>
+        </ul>
+    </div>
+</nav>
+<div class="row">
+<div class="col s12">
+    <div class="col s5 left">
+        <img th:src="@{/dental.jpg}" class="materialboxed">
+
+    </div>
+    <div class="col s7">
+            <form class="col s12" th:action="@{/{patientId}/addtooth/{id}(patientId=${patient.id}, id=${dentalFile.id})}" th:object="${tooth}" method="post" >
+        <div class="container">
+
+            <h1>Add tooth <a class="right" th:href="@{/patient/{id}(id=${patient.id})}"><i class="fas fa-arrow-left"></i></a></h1>
+            <h5>Please fill in this form to add tooth</h5>
+            <hr>
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="fas fa-teeth-open prefix"></i>
+                    <label for="toothName" class="black-text"><b>Tooth name</b></label>
+                    <input th:field="*{toothName}" id="toothName" type="text" class="" placeholder="Tooth name" required>
+
+                </div>
+                <div class="input-field col s6"></div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="fas fa-capsules prefix"></i>
+                    <label for="treatment" class="black-text"><b>Treatment</b></label>
+                    <input th:field="*{treatment}" id="treatment" type="text" placeholder="Treatment" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="fas fa-stethoscope prefix"></i>
+                    <input th:field="*{diagnostic}" id="diagnostic" type="text" placeholder="Diagnostic" required>
+                    <label for="diagnostic" class="black-text"><b>Diagnostic</b></label>
+                </div>
+            </div>
+            <button class="btn waves-effect waves-light light-blue black-text right" type="submit" name="action"><strong>Add</strong></button>
+        </div>
+    </form>
+    </div>
+</div>
+</div>
+
+</body>
+</html>
